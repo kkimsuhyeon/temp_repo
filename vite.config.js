@@ -3,7 +3,7 @@ import { resolve } from "path";
 import fs from "fs";
 import { ViteMinifyPlugin } from "vite-plugin-minify";
 import { createHtmlPlugin } from "vite-plugin-html";
-import globby from "globby";
+import { globby } from "globby";
 
 // 페이지 디렉토리 경로
 const pagesDir = resolve(__dirname, "src/pages");
@@ -26,15 +26,18 @@ export default defineConfig(async () => {
 
   // 공통 head 파일 읽기
   const commonHeadPath = resolve(__dirname, "src/includes/common-head.html");
-  
+
   const commonHead = fs.readFileSync(commonHeadPath, "utf-8");
 
   return {
-    root: "./src",
-    plugins: [ViteMinifyPlugin()],
+    plugins: [ViteMinifyPlugin(), createHtmlPlugin({ minify: false, pages: [
+      { entry: "/src/pages/home/index.ts", filename: "index.html", template: "/src/pages/home/index.html", injectOptions: { data: { commonHead: commonHead } } },
+      { entry: "/src/pages/about/index.ts", filename: "index.html", template: "/src/pages/about/index.html" },
+      { entry: "/src/pages/contact/index.ts", filename: "index.html", template: "/src/pages/contact/index.html" }
+    ] })],
     appType: "mpa",
     build: {
-      outDir: "../dist",
+      outDir: "./dist",
       emptyOutDir: true,
       rollupOptions: {
         input,
