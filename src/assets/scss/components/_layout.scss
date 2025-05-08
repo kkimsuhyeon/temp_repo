@@ -1,0 +1,292 @@
+@use "../abstracts/__abstracts-dir.scss" as *;
+
+#wrapper {
+  display: initial;
+}
+
+#page-wrapper.contents {
+  display: flex;
+  width: 100%;
+  @include calc-height(60);
+  padding: 0;
+}
+
+.login {
+  width: 400px;
+  margin: 0 auto;
+  padding-top: 160px;
+
+  .logo-wrap {
+    .logo {
+      width: 360px;
+      margin: 0 auto 40px;
+    }
+  }
+
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .btn,
+    .form-control {
+      height: 44px;
+    }
+
+    .btn {
+      margin-top: 40px;
+    }
+  }
+}
+
+.page {
+  &-top {
+    @include flex-align-center;
+    height: 48px;
+    padding: 0 24px;
+    background: $bg;
+
+    .logo {
+      width: 156px;
+      height: 24px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .login-info {
+      @include flex-align-center;
+      gap: 8px;
+      margin-left: auto;
+    }
+
+    > .btn {
+      margin-left: 56px;
+    }
+  }
+}
+
+.nav {
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    min-width: 220px;
+    @include calc-height(48);
+    padding-bottom: 40px;
+    background: #293846;
+
+    .navbar-default {
+      overflow-y: auto;
+      width: 100%;
+      height: 100%;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 99px;
+        background: rgba($blue, 0.3);
+      }
+    }
+
+    .select {
+      width: 100%;
+      &-wrap {
+        z-index: 3;
+        position: sticky;
+        top: 0;
+        padding: 12px;
+        background: #293846;
+
+        label {
+          margin-bottom: 4px;
+          padding-left: 4px;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  &.one-depth {
+    > li {
+      &.active {
+        > a {
+          color: #a7b1c2;
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+      &.current {
+        > a {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+.channel {
+  width: 100%;
+  min-height: 38px;
+  margin-top: 8px;
+  padding: 10px 20px;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  word-break: break-all;
+
+  &-wrap {
+    padding: 24px 20px 16px 20px;
+    cursor: default;
+
+    .title {
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+}
+
+.breadcrumb {
+  align-items: flex-end;
+  height: 28px;
+
+  li {
+    &:first-child {
+      a {
+        cursor: default;
+      }
+    }
+    &:last-child {
+      font-weight: 700;
+
+      &:before {
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.content {
+  &-wrap {
+    overflow: auto;
+    @include calc-width(220);
+    @include calc-height(48);
+    // padding: 0 40px 32px;
+  }
+
+  &-top {
+    z-index: 5;
+    position: sticky;
+    top: 0;
+    min-width: 1700px;
+    padding: 0 40px 8px;
+    background: #fff;
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    min-width: 1700px;
+    height: calc(100% - 60px);
+    min-height: 640px;
+    padding: 0 40px 32px;
+    // padding-bottom: 32px;
+  }
+}
+
+.title-wrap {
+  h2 {
+    @include flex-align-center;
+    gap: 6px;
+    margin: 0;
+    @include font(20, 700);
+
+    .tooltip-btn {
+      margin: 0;
+      color: $primary;
+    }
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.is-visible {
+  visibility: hidden;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  margin: 12px 0;
+  border-bottom: 1px dashed $border;
+}
+
+.info-box {
+  @include inlineflex-align-center;
+  gap: 8px;
+  padding: 8px 20px;
+  font-weight: 500;
+  border-radius: 8px;
+  background: $bg;
+
+  li + li {
+    &:before {
+      content: "/";
+      padding-right: 8px;
+    }
+  }
+
+  &.full {
+    justify-content: space-between;
+
+    li {
+      @include flex-align-center;
+      width: 100%;
+
+      span {
+        margin-left: auto;
+      }
+
+      &.price {
+        min-width: 340px;
+      }
+    }
+  }
+}
+
+.loading-comp {
+  z-index: 2100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  &:before {
+    z-index: -1;
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .lottie-container {
+    @include pos-center;
+    transform: translate(-50%, -55%) scaleX(-1);
+  }
+
+  #loading-image {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}

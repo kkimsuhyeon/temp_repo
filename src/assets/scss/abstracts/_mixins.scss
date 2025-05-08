@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+@mixin ellipse {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin ellipsis2 {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+@mixin flex-align-center {
+    display: flex;
+    align-items: center;
+}
+@mixin inlineflex-align-center {
+    display: inline-flex;
+    align-items: center;
+}
+@mixin flex-direct-col {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin bgicon($size) {
+    content: '';
+    display: block;
+    width: $size + px;
+    height: $size + px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: $size + px;
+}
+
+@mixin calc-width($width) {
+    width: calc(100% - #{$width + px});
+}
+@mixin calc-maxwidth($width) {
+    max-width: calc(100% - #{$width + px});
+}
+@mixin calc-minwidth($width) {
+    min-width: calc(100% - #{$width + px});
+}
+
+@mixin calc-height($height) {
+    height: calc(100vh - #{$height + px});
+}
+@mixin calc-maxheight($height) {
+    max-height: calc(100vh - #{$height + px});
+}
+@mixin calc-minheight($height) {
+    min-height: calc(100vh - #{$height + px});
+}
+
+@mixin square-size($size) {
+    width: $size + px;
+    max-width: $size + px;
+    min-width: $size + px;
+    height: $size + px;
+    max-height: $size + px;
+    min-height: $size + px;
+}
+
+@mixin pos-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@mixin pos-centerXT($top) {
+    position: absolute;
+    top: $top + px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+@mixin pos-centerXB($bottom) {
+    position: absolute;
+    bottom: $bottom + px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+@mixin pos-centerYL($left) {
+    position: absolute;
+    top: 50%;
+    left: $left + px;
+    transform: translateY(-50%);
+}
+@mixin pos-centerYR($right) {
+    position: absolute;
+    top: 50%;
+    right: $right + px;
+    transform: translateY(-50%);
+}
+
+@mixin grid-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+}

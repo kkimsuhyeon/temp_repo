@@ -1,0 +1,6 @@
+:host {
+    &::part(logo-image) {
+        width: var(--logo-width, auto);
+        height: var(--logo-height, auto);
+    }
+}

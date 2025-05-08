@@ -1,0 +1,128 @@
+
+@use "../abstracts/__abstracts-dir.scss" as *;
+
+.info-table {
+	table {
+		width: 100%;
+		border-top: 1px solid $border;
+		border-bottom: 1px solid $border;
+	}
+
+	th {
+		font-weight: 500;
+		text-align: center;
+		background: rgba($color: $bg, $alpha: .55);
+	}
+
+	td {
+		border-left: 1px solid $border;
+		& + th {
+			// border-left: 1px solid $border;
+		}
+	}
+
+	* {
+		vertical-align: middle;
+	}
+
+	th,
+	td {
+		// height: 40px;
+		min-height: 40px;
+		padding: 8px 12px;
+	}
+
+	&.table-col {
+		td {
+			border-top: 1px solid $border;
+
+			& + td {
+				border-left: 1px solid $border;
+			}
+		}
+	}
+
+	&.table-row {
+		tr {
+			display: flex;
+
+			& + tr {
+				border-top: 1px solid $border;
+			}
+
+			&.row1 {
+				td:last-child {
+					min-width: calc(66.666% - 180px);
+				}
+			}
+
+			&.row2 {
+				td:last-child {
+					max-width: calc(33.333% - 180px);
+				}
+			}
+		}
+
+		th,
+		td {
+			@include flex-align-center;
+			gap: 8px;
+
+			&.align-right {
+				gap: 0;
+			}
+		}
+
+		th {
+			width: 180px;
+			max-width: 180px;
+			min-width: 180px;
+			text-align: left;
+		}
+
+		td {
+			flex: 1;
+		}
+	}
+
+	&.table-mix {
+		tr + tr {
+			border-top: 1px solid $border;
+		}
+
+		td {
+			border-left: 1px solid $border;
+		}
+
+		thead {
+			border-bottom: 1px solid $border;
+		}
+
+		tbody {
+			th {
+				width: 180px;
+			}
+		}
+	}
+
+	.btn {
+		height: 24px;
+		margin-left: 4px;
+		border-radius: 4px;
+	}
+
+	.select {
+		.form-control {
+			height: 24px;
+			border-radius: 4px;
+		}
+	}
+
+	td:has(input) {
+		padding: 4px 12px;
+
+		.btn {
+			height: 32px;
+		}
+	}
+}

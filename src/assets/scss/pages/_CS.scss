@@ -1,0 +1,17 @@
+@use "../abstracts/__abstracts-dir.scss" as *;
+
+.admin {
+	&-service {
+		.chkbox-btn {
+			min-width: 128px;
+		}
+	}
+}
+
+.cs-01-120-p4 {
+	width: 100%;
+
+	img {
+		width: 100%;
+	}
+}

@@ -1,0 +1,14 @@
+.logo {
+  --logo-width: 156px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.logout-button {
+  margin-left: 50px;
+}

@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+@use "./abstracts/_abstracts-dir";
+@use "./vendor/_vendor-dir";
+@use "./base/_base-dir";
+@use "./components/_components-dir";
+@use "./pages/_pages-dir";
+
+@forward "./abstracts/_abstracts-dir";
+@forward "./vendor/_vendor-dir";
+@forward "./base/_base-dir";
+@forward "./components/_components-dir";
+@forward "./pages/_pages-dir";

@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+///
+/// **px to viewport Unit Calculator **
+///  PX ==>  vw, vh, vmin, vmax로 변환
+///
+/// @param {Value} 기본타입은 px만 받는다.
+/// 추가적으로 변환 하고자 하는 단위를  두번째 인자로 받는다.
+/// 예) 12px, 12px vw, 12px vh, 12px vmin, 12px vmax
+/// @group fonts
+///
+
+@function px-to-other-unit-calculator($unit-px, $width, $unit) {
+  $tmpx: null;
+  @if ($unit-px == 0) {
+    $tmpx: $unit-px;
+  } @else if($unit-px == auto) {
+    $tmpx: auto;
+  } @else {
+    $tmpx: (($unit-px/$width) * 100) + $unit;
+  }
+  @return $tmpx;
+}
+
+@function calc-unit($value-px) {
+  // 단위 변환
+  @if $value-px != null {
+    $changed-unit: null !default;
+    $viewport-width: null !default;
+    $use-unit-type: null !default;
+
+    //  PSD 가로폭 정의, 사용 단위 선택
+    @if (length($value-px) == 1) {
+      // 기본값 vw
+      $use-unit-type: vw;
+      $viewport-width: $psd-mobile-width;
+      // 단위 변환
+      $changed-unit: px-to-other-unit-calculator(
+        $value-px,
+        $psd-mobile-width,
+        $use-unit-type
+      );
+    } @else if (length($value-px) > 1) {
+      $tmp-px: nth($value-px, 1);
+      $tmp-parm: nth($value-px, 2);
+
+      @if (type-of($tmp-parm) == string and $tmp-parm != auto) {
+        // single 단위 변환
+        $use-unit-type: $tmp-parm;
+        @if ($use-unit-type == vmin) {
+          $viewport-width: $psd-mobile-width;
+        } @else if ($use-unit-type == vmax) {
+          $viewport-width: $psd-mobile-height;
+        } @else if ($use-unit-type == vw) {
+          $viewport-width: $psd-mobile-width;
+        } @else if ($use-unit-type == vh) {
+          $viewport-width: $psd-mobile-height;
+        }
+        $changed-unit: px-to-other-unit-calculator(
+          $tmp-px,
+          $viewport-width,
+          $use-unit-type
+        );
+      } @else if(
+        type-of($tmp-parm) ==
+          number or
+          ((length($value-px) >1) and $tmp-parm == auto)
+      )
+      {
+        // multiple 단위 변환
+        $use-unit-type: vw;
+        $viewport-width: $psd-mobile-width;
+
+        @each $i in $value-px {
+          $changed-unit: append(
+            $changed-unit,
+            px-to-other-unit-calculator($i, $viewport-width, $use-unit-type)
+          );
+        }
+      }
+    }
+
+    @return $changed-unit;
+  } @else {
+    @return null;
+  }
+}

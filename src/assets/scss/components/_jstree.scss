@@ -1,0 +1,24 @@
+.jstree-default {
+	.jstree-disabled {
+		background: #efefef;
+		pointer-events: none;
+		&.jstree-hovered {
+			background: #efefef;
+		}
+		&.jstree-clicked {
+			//background: none;
+			>.jstree-checkbox {
+				background-position: -164px -4px;
+			}
+			&.jstree-hovered {
+				background: #efefef;
+			}
+			&:hover {
+				background: #efefef;
+				>.jstree-checkbox {
+					background-position: -164px -4px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,313 @@
+@use "../abstracts/__abstracts-dir.scss" as *;
+
+.admin-dashboard {
+	.temp-con {
+		display: flex;
+		height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+
+    img {
+        width: 300px;
+    }
+	}
+	// ibox 공통
+	.ibox {
+		margin: 0;
+		border: 1px solid $border;
+
+		&-title {
+			@include flex-align-center;
+			margin: 0;
+			padding: 0 16px;
+			@include font(15,600);
+			border: 0;
+			border-bottom: 1px solid $border;
+		}
+
+		&-content {
+			@include flex-align-center;
+			padding: 20px;
+			border: 0;
+
+			.count {
+				display: flex;
+				align-items: baseline;
+				justify-content: flex-end;
+				gap: 4px;
+				font-size: 16px;
+
+				span {
+					@include font(20,400);
+				}
+			}
+		}
+	}
+}
+.dashboard {
+	&-title {
+		@include flex-align-center;
+		gap: 4px;
+		@include font(16,500);
+
+		&:before {
+			content: '';
+			display: block;
+			@include square-size(14);
+			border-radius: 50%;
+			background: #a9b9c8;
+		}
+
+		.btn {
+			margin-left: auto;
+		}
+	}
+
+	&-today {
+		@include flex-align-center;
+		gap: 24px;
+		padding: 24px;
+		background: $blue2;
+
+		.ibox {
+			flex: 1 1;
+
+			&-title {
+				@include flex-align-center;
+				height: 40px;
+				min-height: 32px;
+				margin: 0;
+				padding: 0 16px;
+				@include font(15,600);
+			}
+
+			&-content {
+				justify-content: flex-end;
+				gap: 8px;
+
+				.link-text {
+					display: flex;
+					align-items: baseline;
+					justify-content: space-between;
+					gap: 4px;
+					flex: 1;
+					width: 100%;
+					color: $default;
+					
+					&.line {
+						border-bottom: 1px solid $default;
+					}
+				}
+			}
+		}
+	}
+
+	&-tab {
+		overflow: hidden;
+		height: auto;
+		margin-top: 20px;
+		padding: 0 20px 20px;
+		border-radius: 12px;
+		box-shadow: 0px 0px 16px 0px #12121214;
+
+		.nav-tabs {
+			li {
+				flex: 1;
+
+				.nav-link {
+					@include flex-align-center;
+					justify-content: center;
+					height: 48px;
+					padding: 0;
+					@include font(18,500);
+					border: 0;
+
+					&.active {
+						font-weight: 700;
+						border-bottom: 2px solid $primary;
+					}
+				}
+			}
+		}
+
+		.tab-content {
+			.panel {
+				&-body {
+					@include flex-direct-col;
+					gap: 24px;
+					padding-top: 16px;
+				}
+				&-content {
+					.dashboard-title {
+						margin-bottom: 8px;
+					}
+				}
+				&-box {
+					width: 100%;
+				}
+			}
+		}
+		
+		.ibox {
+			flex: auto;
+			height: 120px;
+			max-height: 120px;
+			min-height: 110px;
+			box-shadow: 2px 2px 8px 0px #12121214;
+
+			&-title {
+				justify-content: center;
+				height: 36px;
+				min-height: initial;
+				text-align: center;
+				background: $bg;
+			}
+
+			&-content {
+				gap: 60px;
+				justify-content: center;
+				height: calc(100% - 36px);
+				padding: 0 20px;
+			}
+
+			&.type2 {
+				@include flex-align-center;
+
+				.ibox {
+					&-title {
+						width: 100px;
+						max-width: 100px;
+						min-width: 100px;
+						height: 100%;
+						border: 0;
+					}
+					&-content {
+						flex-direction: column;
+						gap: 0;
+						flex: 1 1 auto;
+						height: 100%;
+						padding: 8px 20px;
+
+						.count-box {
+							@include flex-align-center;
+							justify-content: space-between;
+							flex: 1;
+							width: 100%;
+						}
+					}
+				}
+
+				.count-box {
+					& + .count-box {
+						border-top: 1px solid $border;
+					}
+
+					.tit {
+						margin: 0;
+					}
+				}
+			}
+		}
+
+		.count-box {
+			text-align: center;
+
+			.tit {
+				margin-bottom: 8px;
+				color: $black4;
+			}
+		}
+
+		// 누적 현황
+		.accrue {
+			&-box {
+				@include flex-align-center;
+				gap: 16px;
+			}
+		}
+
+		// 기간별 현황
+		.period {
+			.search-component {
+				.search {
+					&-group {
+						align-items: center;
+						justify-content: flex-start;
+						gap: 24px;
+						border: 0;
+					}
+					&-item >label {
+						display: none;
+					}
+				}
+
+				.button-group {
+					margin: 0;
+
+					.btn.active {
+						box-shadow: none;
+					}
+				}
+				
+				.switch {
+					gap: 12px;
+					padding: 8px 16px;
+					border-radius: 99px;
+					background: $bg;
+
+					.btn {
+						display: flex;
+						padding: 0;
+					}
+					.active {
+						color: #fff;
+						background: $primary;
+					}
+				}
+			}
+
+			&-chart {
+				display: flex;
+				margin-top: 20px;
+
+				.chart-box {
+					flex: 1;
+					height: 400px;
+				}
+			}
+
+			&-box {
+				@include flex-direct-col;
+				width: 320px;
+				min-width: 320px;
+				gap: 24px;
+
+				.ibox {
+					flex: 0;
+
+					&.type2 {
+						min-height: 100px;
+					}
+				}
+			}
+		}
+	}
+
+	// 가입자 현황 tab
+	&-members {
+	}
+	// 포인트 현황 tab
+	&-point {
+	}
+	// 문의 현황 tab
+	&-inquiry {
+		.accrue-box {
+			.ibox {
+				flex: 0 1 auto;
+				min-width: 470px;
+			}
+		}
+	}
+}

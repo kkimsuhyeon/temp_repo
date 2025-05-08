@@ -1,0 +1,10 @@
+@use "../abstracts/__abstracts-dir.scss" as *;
+
+.admin {
+    &-terms {
+        .dataTables_wrapper:has(.terms-table1),
+        .dt-container:has(.terms-table1) {
+            max-height: 360px;
+        }
+    }
+}

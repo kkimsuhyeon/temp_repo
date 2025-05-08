@@ -1,0 +1,165 @@
+@charset "utf-8";
+
+@use "color" as *;
+
+// @use url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,300,500,700");
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../../assets/fonts/glyphicons-halflings-regular.eot');
+  src: url('../../assets/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../../assets/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../../assets/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../../assets/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../../assets/fonts/glyphicons-halflings-regular.svg') format('svg');
+}
+
+
+@font-face {
+	font-family:'Pretendard Variable';
+	font-weight: 45 920;
+	src: url('../../assets/fonts/PretendardVariable.ttf') format('opentype'),
+}
+@font-face {
+	font-family: 'Pretendard Variable';
+	font-weight: 45 920;
+	src: url('../../assets/fonts/PretendardVariable.woff2') format('woff2-variations');
+}
+
+@mixin font($size, $weight) {
+	font-size: $size + px;
+	font-weight: $weight;
+}
+@mixin font-impt($size, $weight) {
+	font-size: $size + px !important;
+	font-weight: $weight !important;
+}
+
+.font12-400 {@include font-impt(12, 400)}
+.font12-500 {@include font-impt(12, 500)}
+.font12-700 {@include font-impt(12, 700)}
+.font14-500 {@include font-impt(14, 500)}
+.font14-600 {@include font-impt(14, 600)}
+.font14-700 {@include font-impt(14, 700)}
+.font16-400 {@include font-impt(16, 400)}
+.font16-500 {@include font-impt(16, 500)}
+.font16-700 {@include font-impt(16, 700)}
+.font18-500 {@include font-impt(18, 500)}
+.font18-700 {@include font-impt(18, 700)}
+.font20-700 {@include font-impt(20, 700)}
+.font24-700 {@include font-impt(24, 700)}
+
+.font-regular {font-weight: 400 !important;}
+.font-medium {font-weight: 500 !important;}
+.font-bold {font-weight: 700 !important;}
+
+
+.color-default {color: #20102b !important;}
+.color-primary {color: #003879 !important;}
+.color-primary2 {color: #376CFB !important;}
+.color-red {color: #FF2828 !important;}
+.color-blue {color: #82A3FF !important;}
+.color-blue2 {color: #E6ECFF !important;}
+
+.color-black1 {color: #444 !important;}
+.color-black2 {color: #333 !important;}
+.color-black3 {color: #888 !important;}
+.color-black4 {color: #5b5b5b !important;}
+
+.color-border {color: #E1E5EA !important;}
+.color-border2 {color: #E4E4E4 !important;}
+.color-border3 {color: #CCCCCC !important;}
+
+.color-bg {color: #F1F2F5 !important;}
+.color-bg2 {color: #DFDFDF !important;}
+.color-bg3 {color: #7A7A7A !important;}
+
+
+// grid color
+.color-orange {color: #EC8E00 !important;}
+.color-purple {color: #6042FB !important;}
+.color-blue3 {color: #0066FF !important;}
+.color-green {color: #117E43 !important;}
+
+
+.align-left {justify-content: flex-start !important; text-align: left !important;}
+.align-center {justify-content: center !important; text-align: center !important;}
+.align-right {justify-content: flex-end !important; text-align: right !important;}
+
+
+[class^=bullet-] {
+	li {
+		position: relative;
+		padding-left: 12px;
+
+		& + li {
+			margin-top: 4px;
+		}
+
+		&:before {
+			display: inline-block;
+			position: absolute;
+			left: 0;
+			color: inherit;
+		}
+	}
+	&.bullet-tit {
+		margin-bottom: 4px;
+	}
+}
+
+.bullet {
+	&-dot {
+		li {
+			&:before {
+				content: 'ㆍ';
+				margin-right: 8px;
+			}
+		}
+		&.align-center {
+			li:before {
+				position: static;
+				margin: 0;
+			}
+		}
+	}
+
+	&-num {
+		li {
+			display: flex;
+			gap: 4px;
+			padding: 0;
+
+			span {
+				min-width: 12px;
+			}
+		}
+	}
+}
+
+.require {
+	&:before {
+		content: '*';
+		display: none;
+		color: $red;
+		margin-right: 2px;
+	}
+	&:after {
+		content: '*';
+		color: $red;
+		margin-left: 2px;
+	}
+
+	&.reverse {
+		&:before {
+			display: initial;
+		}
+		&:after {
+			display: none;
+		}
+	}
+}
+
+.ellipse {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

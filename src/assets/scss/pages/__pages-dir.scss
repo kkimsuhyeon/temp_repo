@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+/*
+This file is used to contain all page imports.
+*/
+
+//Import pages files
+
+// dash board
+@use "DA";
+
+// admin-board
+@use "BO";
+
+// admin-usermgt
+@use "MU";
+
+// admin-autotransper
+@use "CA";
+
+// admin-CSmgmt
+@use "CS";
+
+// admin-terms
+@use "CV";
+
+// admin-homepage
+@use "HO";

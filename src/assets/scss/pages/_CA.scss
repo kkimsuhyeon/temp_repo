@@ -1,0 +1,59 @@
+@use "../abstracts/__abstracts-dir.scss" as *;
+
+.attachment-prev {
+	overflow: auto;
+	max-height: 525px;
+
+	img {
+		width: 100%;
+	}
+}
+
+.summary {
+	&-box {
+		@include flex-align-center;
+		gap: 20px;
+
+		li {
+			flex: 1;
+			padding: 8px 20px;
+			border: 1px solid $border;
+			border-radius: 4px;
+			background: rgba($color: $bg, $alpha: .3);
+
+			.title {
+				margin-bottom: 8px;
+				padding-bottom: 8px;
+				font-weight: 500;
+				text-align: center;
+				border-bottom: 1px solid $border;
+			}
+		}
+	}
+
+	&-item {
+		@include flex-align-center;
+		gap: 40px;
+
+		p {
+			flex: 1;
+			text-align: right;
+
+			& + p {
+				position: relative;
+				&:before {
+					content: '';
+					display: block;
+					@include pos-centerYL(-12);
+					width: 1px;
+					height: 18px;
+					background: $border2;
+				}
+			}
+
+			span {
+				font-weight: 500;
+			}
+		}
+	}
+}

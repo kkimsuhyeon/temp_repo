@@ -1,0 +1,43 @@
+@use "../abstracts/__abstracts-dir.scss" as *;
+
+.admin {
+	&-faq {
+		.dataTables_wrapper:has(.faq-table1) {
+			max-height: 360px;
+		}
+
+		.search {
+			&-component {
+				padding: 0;
+				border: 0;
+			}
+
+			&-item {
+				align-items: center;
+				flex-direction: row;
+				gap: 8px;
+			}
+		}
+	}
+}
+
+.ho {
+	&-03 {
+		&-130 {
+			&-p {
+				.form {
+					&-box {
+						flex-direction: column;
+						align-items: flex-start;
+						margin-top: 12px;
+
+						label {
+							padding: 0;
+							padding-left: 4px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
